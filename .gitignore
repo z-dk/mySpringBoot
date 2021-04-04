@@ -1,0 +1,16 @@
+#*
+.#*
+*~
+_site/
+.idea
+*.sw[op]
+.project
+.settings/
+.classpath
+.gradle
+sample-pages
+code
+spring-boot-*/
+spring-boot/
+
+target
