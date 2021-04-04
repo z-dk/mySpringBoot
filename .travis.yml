@@ -1,0 +1,10 @@
+language: java
+jdk:
+  - oraclejdk8
+services:
+  - mongodb
+  - redis
+sudo: false
+install: true
+before_script: travis_wait 30 ./mvnw install -q -U -DskipTests=true -Dmaven.test.redirectTestOutputToFile=true
+script: ./mvnw install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
