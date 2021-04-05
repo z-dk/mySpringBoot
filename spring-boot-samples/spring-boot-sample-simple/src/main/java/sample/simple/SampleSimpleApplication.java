@@ -16,6 +16,7 @@
 
 package sample.simple;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import sample.simple.service.HelloWorldService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author z_dk
+ */
+@SuppressWarnings({"SpringJavaAutowiredFieldsWarningInspection"})
 @SpringBootApplication
 public class SampleSimpleApplication implements CommandLineRunner {
 
@@ -35,8 +40,9 @@ public class SampleSimpleApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
+		String code = "exitcode";
 		System.out.println(this.helloWorldService.getHelloMessage());
-		if (args.length > 0 && args[0].equals("exitcode")) {
+		if (args.length > 0 && code.equals(args[0])) {
 			throw new ExitException();
 		}
 	}

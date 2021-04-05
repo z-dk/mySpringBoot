@@ -18,10 +18,16 @@ package sample.simple.service;
 
 import java.time.Duration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import sample.simple.SampleConfigurationProperties;
 
+/**
+ * @author z_dk
+ */
 @Component
+@SuppressWarnings({"SpringJavaAutowiredFieldsWarningInspection"})
 public class HelloWorldService {
 
 	@Value("${name:World}")
@@ -29,9 +35,12 @@ public class HelloWorldService {
 
 	@Value("${duration:10s}")
 	private Duration duration;
+	
+	@Autowired
+	private SampleConfigurationProperties properties;
 
 	public String getHelloMessage() {
-		return "Hello " + this.name + " for " + this.duration.getSeconds() + " seconds";
+		return properties.getName() + ": Hello " + this.name + " for " + this.duration.getSeconds() + " seconds";
 	}
 
 }
